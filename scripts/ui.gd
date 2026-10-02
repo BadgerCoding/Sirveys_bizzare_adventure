@@ -2,8 +2,8 @@ class_name UI
 extends RefCounted
 # Small helpers so every screen can be built from code (no hand-written .tscn files).
 
-const BG := Color(0.10, 0.09, 0.16)
-const AVATAR_COLORS = [Color("e74c3c"), Color("e67e22"), Color("f1c40f"), Color("2ecc71"), Color("1abc9c"), Color("3498db"), Color("9b59b6"), Color("95a5a6")]
+const BG := Color("5a4132")   # same as AppTheme.BG
+const AVATAR_COLORS = [Color("c4443a"), Color("d9822b"), Color("e9a85d"), Color("7fb04a"), Color("4f9a8a"), Color("5b86b8"), Color("8c5ea8"), Color("9a8a7a")]
 
 static func button(text: String, min_size := Vector2(0, 120), font_size := 40) -> Button:
     var b := Button.new()
@@ -19,6 +19,10 @@ static func label(text: String, font_size := 36, align := HORIZONTAL_ALIGNMENT_C
     l.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
     l.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
     l.add_theme_font_size_override("font_size", font_size)
+    if font_size >= 56:   # headings: tan text with a dark pixel outline, like the UI kit titles
+        l.add_theme_color_override("font_color", AppTheme.TAN)
+        l.add_theme_color_override("font_outline_color", AppTheme.DARK)
+        l.add_theme_constant_override("outline_size", 10)
     return l
 
 static func background(parent: Control, color := BG) -> void:
@@ -44,6 +48,7 @@ static func bar(color: Color) -> ProgressBar:
     p.custom_minimum_size = Vector2(0, 28)
     var fill := StyleBoxFlat.new()
     fill.bg_color = color
+    fill.anti_aliasing = false
     p.add_theme_stylebox_override("fill", fill)
     return p
 
@@ -90,7 +95,7 @@ static func sprite(path: String, color: Color, caption: String) -> Control:
 # options: [[button_text, Callable], ...]. Use Callable() for "just close".
 static func dialog(parent: Control, text: String, options: Array) -> void:
     var dim := ColorRect.new()
-    dim.color = Color(0, 0, 0, 0.75)
+    dim.color = Color(0.08, 0.04, 0.02, 0.8)
     dim.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
     parent.add_child(dim)
     var center := CenterContainer.new()

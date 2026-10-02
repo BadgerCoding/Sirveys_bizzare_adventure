@@ -15,6 +15,9 @@ var current_name := ""
 var args: Dictionary = {}
 var _landscape := false
 
+func _ready() -> void:
+    get_tree().root.theme = AppTheme.build()
+
 func go(screen: String, data: Dictionary = {}) -> void:
     if not SCREENS.has(screen):
         push_error("Unknown screen: %s" % screen)

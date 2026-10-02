@@ -63,7 +63,7 @@ func _place(c: Control, l: float, t: float, r: float, b: float) -> void:
     c.offset_bottom = 0
 
 func _build_ui() -> void:
-    UI.background(self, Color(0.07, 0.07, 0.12))
+    UI.background(self, AppTheme.DARK)
     var root := UI.margin(self, 20)
     root.add_theme_constant_override("separation", 16)
 
@@ -88,7 +88,7 @@ func _build_ui() -> void:
     field.clip_contents = true
     root.add_child(field)
     var bg := ColorRect.new()
-    bg.color = Color(0.16, 0.22, 0.30)
+    bg.color = Color("4b5a45")
     bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
     field.add_child(bg)
 
@@ -104,7 +104,7 @@ func _build_ui() -> void:
     _say_label = UI.label("", 32)
     bubble.add_child(_say_label)
 
-    _player_sprite = UI.sprite("res://assets/player.png", Color("2ecc71"), "YOU")
+    _player_sprite = UI.sprite("res://assets/player.png", Color("7fb04a"), "YOU")
     _place(_player_sprite, 0.46, 0.40, 0.60, 0.98)
     field.add_child(_player_sprite)
 
@@ -118,7 +118,7 @@ func _build_ui() -> void:
     var ev := VBoxContainer.new()
     ep.add_child(ev)
     ev.add_child(UI.label("Wizard", 34, HORIZONTAL_ALIGNMENT_LEFT))
-    _enemy_bar = UI.bar(Color("e74c3c"))
+    _enemy_bar = UI.bar(Color("c4443a"))
     ev.add_child(_enemy_bar)
     _enemy_text = UI.label("", 28, HORIZONTAL_ALIGNMENT_LEFT)
     ev.add_child(_enemy_text)
@@ -140,11 +140,11 @@ func _build_ui() -> void:
     pv.alignment = BoxContainer.ALIGNMENT_CENTER
     ph.add_child(pv)
     pv.add_child(UI.label("%s  Lv.%d" % [str(GameState.profile.get("username", "Player")), GameState.level()], 32, HORIZONTAL_ALIGNMENT_LEFT))
-    _player_bar = UI.bar(Color("2ecc71"))
+    _player_bar = UI.bar(Color("7fb04a"))
     pv.add_child(_player_bar)
     _player_text = UI.label("", 26, HORIZONTAL_ALIGNMENT_LEFT)
     pv.add_child(_player_text)
-    _xp_bar = UI.bar(Color("3498db"))
+    _xp_bar = UI.bar(AppTheme.TAN)
     pv.add_child(_xp_bar)
 
     _menu = GridContainer.new()

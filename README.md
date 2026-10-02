@@ -21,3 +21,8 @@ scripts/screens/story_flow.gd > _start_story(): replace the placeholder line wit
   and call QuizService.generate_from_file() with the path it returns.
 - Photo capture ("Take photo") is not implemented: it needs a camera plugin.
 - Balance numbers (damage, HP, timers, XP) live in scripts/game_state.gd.
+
+## Look and feel
+The whole UI is themed from `scripts/app_theme.gd` (palette + button/panel/bar styles, applied once in SceneRouter).
+Pixel font: copy a free pixel .ttf to `assets/fonts/pixel.ttf`. In Godot's Import dock select it and set
+Antialiasing = None, Hinting = None, Subpixel Positioning = Disabled, then click Reimport.

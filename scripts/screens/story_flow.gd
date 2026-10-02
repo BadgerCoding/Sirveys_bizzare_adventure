@@ -42,7 +42,7 @@ func _backdrop() -> Control:
         root.add_child(t)
     else:
         var r := ColorRect.new()
-        r.color = Color(0.12, 0.10, 0.22)
+        r.color = AppTheme.PANEL_IN
         r.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
         root.add_child(r)
     return root

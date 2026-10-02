@@ -33,7 +33,7 @@ func _header() -> Control:
     var lvl := GameState.level()
     info.add_child(UI.label("Name: %s" % str(GameState.profile.get("username", "Player")), 38, HORIZONTAL_ALIGNMENT_LEFT))
     info.add_child(UI.label("Level: %d" % lvl, 34, HORIZONTAL_ALIGNMENT_LEFT))
-    var xp := UI.bar(Color("3498db"))
+    var xp := UI.bar(AppTheme.TAN)
     xp.max_value = GameState.xp_needed(lvl)
     xp.value = GameState.xp()
     info.add_child(xp)
